@@ -1,6 +1,6 @@
-## 🧠 Understanding Word Embeddings, Word2Vec, and LLMs
+# 🧠 Understanding Word Embeddings, Word2Vec, and LLMs
 
-### 1. **What are Word Embeddings?** 🔍
+## 1. **What are Word Embeddings?** 🔍
 
 - **Word embeddings** are a type of **dense representation** for **words or phrases** in a **continuous vector space**.  
   Unlike traditional methods (e.g., **one-hot encoding**) that represent words as sparse vectors, word embeddings map words into **dense vectors**, where similar words are represented by **similar vectors**.
@@ -9,11 +9,11 @@
 
 ---
 
-### 2. **How Word2Vec Works** 🧠
+## 2. **How Word2Vec Works** 🧠
 
 **Word2Vec** is a popular model that learns **word embeddings** from text by predicting words based on context or vice versa.
 
-#### 2.1. **Two Approaches in Word2Vec:**
+### 2.1. **Two Approaches in Word2Vec:**
 1. **Continuous Bag of Words (CBOW):**
    - Predict a **target word** based on its **surrounding context** (neighboring words).
    
@@ -26,7 +26,7 @@
 
 ---
 
-#### 2.2. **Problems with Word2Vec** ⚠️
+### 2.2. **Problems with Word2Vec** ⚠️
 
 While Word2Vec is effective, it has some **limitations**:
 
@@ -60,7 +60,7 @@ While Word2Vec is effective, it has some **limitations**:
 
 ---
 
-### 3. **How Transformer-Based Models Understand Words in Context?** 🛠️ 
+## 3. **How Transformer-Based Models Understand Words in Context?** 🛠️ 
 
 The latest generation of language models — such as **ChatGPT**, **Claude**, **Gemini**, **Mistral-7B**, and **Falcon** — are all built on a breakthrough architecture called the **Transformer model**. These models are designed to understand the **meaning of a word based on its context** within a sentence, solving many limitations faced by earlier methods like Word2Vec.
 
@@ -143,7 +143,7 @@ This entire process of generating and normalizing self-attention vectors is know
 
 ---
 
-### 4. **Encoder-Decoder Architecture**
+## 4. **Encoder-Decoder Architecture**
 
 The original transformer architecture was designed for **machine translation** (i.e., translating one language to another). To achieve this, it uses two key components:
 
@@ -156,7 +156,7 @@ For the sentence *"I have visited Italy"*, the encoder learns how the words in E
 
 ---
 
-### 5. **Encoder-Only, Decoder-Only, and Large Language Models (LLMs)**
+## 5. **Encoder-Only, Decoder-Only, and Large Language Models (LLMs)**
 
 Over time, transformer models evolved into **Large Language Models (LLMs)**, which can process vast amounts of text. The basic transformer architecture has been adapted into various models:
 
@@ -168,7 +168,7 @@ LLMs are now so large that training them from scratch is costly, but they have b
 
 ---
 
-### 6. **Pre-Trained Models & Adaptability**
+## 6. **Pre-Trained Models & Adaptability**
 
 LLMs are **pre-trained** by others, allowing anyone to use them for specific tasks, such as text classification or document retrieval. **Hugging Face** offers many **open-source models**, while **OpenAI** provides proprietary models like GPT. These models are widely available, though it can be overwhelming due to the sheer number of options.
 
@@ -184,7 +184,7 @@ RoBERTa will predict the word that fits in place of [MASK], gradually improving 
 
 ---
 
-### 7. **What are Large Language Models (LLMs)?** 🌐
+## 7. **What are Large Language Models (LLMs)?** 🌐
 
 - **Large Language Models (LLMs)** like **GPT-3**, **BERT**, and **T5** are sophisticated neural networks that are **trained on vast amounts of text data** to understand and generate **human-like text**.
   
@@ -196,7 +196,7 @@ RoBERTa will predict the word that fits in place of [MASK], gradually improving 
 
 ---
 
-#### Key Features of LLMs: 🏆
+### Key Features of LLMs: 🏆
 
 - **Contextual Understanding:**  
   Unlike **Word2Vec**, LLMs understand **word meanings based on context**. For instance, the word "**bank**" will have different meanings when used in "river bank" vs. "bank account."
@@ -206,13 +206,13 @@ RoBERTa will predict the word that fits in place of [MASK], gradually improving 
 
 ---
 
-### 8. **Use of Vectors in Word Embeddings and LLMs** 🔢
+## 8. **Use of Vectors in Word Embeddings and LLMs** 🔢
 
 - **Vectors** are central to both **word embeddings** and **LLMs**.
   - In **word embeddings**, vectors represent **individual words** or **phrases**, capturing their semantic meaning.
   - In **LLMs**, vectors represent not only words but also **sentences**, **paragraphs**, and **entire documents**, capturing **contextual relationships** across larger text spans.
 
-#### **Word Vectors in LLMs:**
+### **Word Vectors in LLMs:**
 
 - Words or tokens are converted into vectors, which are then passed through multiple layers of the model to understand their **context**.
   
@@ -220,11 +220,11 @@ RoBERTa will predict the word that fits in place of [MASK], gradually improving 
 
 ---
 
-### 9. **Document Embeddings**
+## 9. **Document Embeddings**
 
 With **encoder models**, we can pass in entire sentences or documents to extract a **vector representation** of them, known as **document embeddings**. These embeddings help us mathematically compare how similar or different two documents are.
 
-#### Example: Book Descriptions
+### Example: Book Descriptions
 
 Consider the following book descriptions:
 
@@ -236,11 +236,11 @@ Consider the following book descriptions:
 We can pass these descriptions through an encoder model, resulting in their **document embeddings**, which position each description uniquely in the vector space based on their semantic meaning.
 
 
-#### Finding Similar Books
+### Finding Similar Books
 
 We store document embeddings in a **vector database**, where each vector is assigned an **ID** and potentially other **metadata**. Suppose we want to find a book about the Roman Empire. We convert the query ("book about the Roman Empire") into its own **document embedding** and compare it with the stored embeddings using **cosine similarity**.
 
-#### Search Process:
+### Search Process:
 
 1. Convert the query into an embedding.
 2. Compare it with stored embeddings.
@@ -248,17 +248,17 @@ We store document embeddings in a **vector database**, where each vector is assi
 
 ---
 
-### 10. **Optimizing Search: Vector Databases**
+## 10. **Optimizing Search: Vector Databases**
 
 Currently, **linear search** compares the query vector to all stored vectors, which becomes inefficient as the database grows. To solve this, vector databases use **algorithms** that **group similar vectors** together, reducing the search space. This trade-off between **speed and accuracy** allows for efficient document retrieval, and modern **vector databases** handle this process automatically.
 
 ---
 
-### 11. **Introduction to LangChain for Vector Search** 🔗
+## 11. **Introduction to LangChain for Vector Search** 🔗
 
 In this section, we will explore how to build a **vector search** system using **LangChain**—a powerful and flexible framework designed for working with **large language models (LLMs)**. LangChain makes it incredibly easy to integrate LLMs into various NLP tasks, and we will be focusing on its ability to perform vector search. 
 
-#### 🌟 Why LangChain?
+### 🌟 Why LangChain?
 
 LangChain offers several features that make it a go-to choice for LLM-based applications:
 
@@ -270,7 +270,7 @@ LangChain offers several features that make it a go-to choice for LLM-based appl
 
 ---
 
-#### 🔍 Building Vector Search with LangChain
+### 🔍 Building Vector Search with LangChain
 
 LangChain’s easy-to-use interface allows us to efficiently build and implement a **vector search** system. The goal of vector search is to retrieve relevant documents by comparing the vector representations (embeddings) of those documents with a query vector. This makes it particularly effective for **semantic search** tasks, where the goal is to find content that is contextually similar, not just a literal keyword match.
 
@@ -278,7 +278,7 @@ By combining LangChain’s capabilities with vector embeddings, you can perform 
 
 ---
 
-#### 🧩 Flexibility in Model Choice
+### 🧩 Flexibility in Model Choice
 
 One of the standout features of LangChain is the freedom it gives you in choosing the **language model provider**. Whether you want to work with a model from **OpenAI**, **Google**, **Cohere**, or any other proprietary vendor, LangChain makes it seamless. 
 
@@ -286,7 +286,7 @@ Additionally, you can utilize **open-source models** from **Hugging Face**, whic
 
 ---
 
-### 📝 **Summary**:
+## 📝 **Summary**:
 
 - **Word embeddings** transform words into dense vectors, representing their meanings in a continuous vector space.
 - **Word2Vec** learns word embeddings based on context (CBOW or Skip-gram).
