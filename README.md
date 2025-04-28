@@ -1,3 +1,9 @@
+---
+title: Book-Recommender
+app_file: gradio-dashboard.py
+sdk: gradio
+sdk_version: 5.27.0
+---
 # 📚 Book Recommender Application
 
 Welcome to the **Book Recommender**!  

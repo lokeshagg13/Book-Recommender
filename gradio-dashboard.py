@@ -125,7 +125,6 @@ def filter_recommendations(
         "Sad": "emotion_sadness",
     }
 
-    print(recommendations.columns)
     if tone in tone_column_map:
         recommendations.sort_values(
             by=tone_column_map[tone], ascending=False, inplace=True
@@ -209,12 +208,6 @@ if __name__ == "__main__":
 
     # Initialize Gradio dashboard
     with gr.Blocks(theme=gr.themes.Base()) as dashboard:
-        gr.HTML("""
-            <head>
-                <title>Book Recommender</title>
-                <link rel="icon" type="image/png" href="">
-            </head>
-        """)
         # Main title
         gr.Markdown("# Semantic Book Recommender")
 
@@ -223,7 +216,7 @@ if __name__ == "__main__":
             user_query = gr.Textbox(
                 label="Please enter a description of a book:",
                 placeholder="e.g., A book to teach children about nature",
-                elem_id="query-textbox"
+                elem_id="query-textbox",
             )
 
             # Category dropdown for filtering
@@ -231,7 +224,7 @@ if __name__ == "__main__":
                 choices=categories,
                 label="Select a category:",
                 value="All",
-                elem_id="category-dropdown"
+                elem_id="category-dropdown",
             )
 
             # Tone dropdown for emotional tone filtering
@@ -239,7 +232,7 @@ if __name__ == "__main__":
                 choices=tones,
                 label="Select an emotional tone:",
                 value="All",
-                elem_id="tone-dropdown"
+                elem_id="tone-dropdown",
             )
 
             # Styled button
@@ -252,7 +245,9 @@ if __name__ == "__main__":
 
         # Recommendations display area
         gr.Markdown("## Recommendations")
-        output = gr.Gallery(label="Recommended books", columns=8, rows=2, elem_id="recom-tbl")
+        output = gr.Gallery(
+            label="Recommended books", columns=8, rows=2, elem_id="recom-tbl"
+        )
 
         # Connect button click with recommendation function
         submit_button.click(
@@ -261,6 +256,12 @@ if __name__ == "__main__":
             outputs=output,
         )
 
+    dashboard.title = "Book Recommender"
+    dashboard.head = """
+        <title>Book Recommender</title>
+        <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/lokeshagg13/Book-Recommender/refs/heads/main/resources/favicon_io/favicon-32x32.png">
+    """
+    
     # Styling the components for a more polished look
     dashboard.css = """
         /* Custom CSS for a white theme with modern styling */
