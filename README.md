@@ -39,6 +39,10 @@ Dataset sourced from Kaggle: [7k+ Books with Metadata](https://www.kaggle.com/da
 - **Text Classification using Zero-shot Learning**:
   - Broadly categorizing books into higher-level groups (Fiction, Nonfiction, Children's categories).
   - Using **Hugging Face Transformers** (e.g., `facebook/bart-large-mnli`) without additional model training.
+- **Sentiment and Emotion Analysis**:
+  - Predicting emotional tone (anger, joy, sadness, etc.) from book descriptions.
+  - Fine-tuned transformer models used (e.g., `j-hartmann/emotion-english-distilroberta-base`).
+  - Allows filtering books based on emotional tone for better personalized recommendations.
 - **Environment Management**:
   - API keys and other secrets managed securely using `.env` files.
   - Requires `OPENAI_API_KEY` to be set.
@@ -144,6 +148,7 @@ pip install huggingface_hub
 - **Store** embeddings in **Chroma** (persisted locally in SQLite and binary files)
 - **Query** the database semantically to find similar books
 - **Classify** books into higher-level groups to support better filtering
+- **Analyze** emotional tones of descriptions for sentiment-based recommendation enhancements
 
 The embeddings and metadata are stored in the `datasets/chroma_db/` directory.
 
@@ -151,8 +156,8 @@ The embeddings and metadata are stored in the `datasets/chroma_db/` directory.
 
 ## 🔮 Upcoming Features
 
-- **Sentiment Analysis**:  
-  Analyzing book descriptions to classify sentiment and improve recommendation relevance.
+- **Gradle Dashboard**:  
+  An interactive dashboard to visually explore books, categories, and search recommendations.
 
 ---
 
