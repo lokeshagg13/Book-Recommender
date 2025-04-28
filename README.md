@@ -36,6 +36,9 @@ Dataset sourced from Kaggle: [7k+ Books with Metadata](https://www.kaggle.com/da
   - **ChromaDB** as a lightweight, fast vector database for storage and retrieval.
 - **Semantic Search**: Find books not just by keywords, but based on meaning!
 - **Batch Processing**: Batching documents for efficient embedding within OpenAI’s rate limits.
+- **Text Classification using Zero-shot Learning**:
+  - Broadly categorizing books into higher-level groups (Fiction, Nonfiction, Children's categories).
+  - Using **Hugging Face Transformers** (e.g., `facebook/bart-large-mnli`) without additional model training.
 - **Environment Management**:
   - API keys and other secrets managed securely using `.env` files.
   - Requires `OPENAI_API_KEY` to be set.
@@ -82,6 +85,55 @@ OPENAI_API_KEY=your_openai_api_key_here
 
 You can find or create your key at [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys).
 
+### 5. Additional Setup for Hugging Face and Mac MPS (Apple Silicon) Support
+
+If you plan to use **Hugging Face Transformers** for **zero-shot classification** and want to enable hardware acceleration on your Mac (using **MPS** — Metal Performance Shaders), you need to install **PyTorch** correctly.
+
+#### (I) Install PyTorch with MPS support (for macOS)
+
+Follow the official installation instructions [here](https://pytorch.org/get-started/locally/), or run the following for macOS:
+
+```bash
+# Install PyTorch for macOS with MPS backend
+pip install torch torchvision torchaudio
+```
+
+> **Note**: MPS support is available on macOS 12.3+ with Apple Silicon (M1, M2, M3 chips) or newer Intel Macs.
+
+---
+
+#### (II) Check if MPS is available
+
+After installing, you can check MPS support with this snippet:
+
+```python
+import torch
+
+if torch.backends.mps.is_available():
+    print("✅ MPS is available. Using hardware acceleration!")
+else:
+    print("⚠️ MPS is not available. Running on CPU.")
+```
+
+#### (III) Why is PyTorch Required?
+
+The Hugging Face `transformers` library needs either **PyTorch**, **TensorFlow**, or **Flax** as a backend to load models like `facebook/bart-large-mnli`.  
+Without a deep learning backend, you will only be able to use tokenizers and configs — not the actual models.
+
+#### (IV) Additional Requirements for Hugging Face
+
+Make sure you have installed:
+
+```bash
+pip install transformers
+```
+
+If not already present, install `huggingface_hub` and other related libraries too:
+
+```bash
+pip install huggingface_hub
+```
+
 ---
 
 ## ✨ How It Works
@@ -91,15 +143,13 @@ You can find or create your key at [https://platform.openai.com/account/api-keys
 - **Embed** documents using OpenAI’s `text-embedding-ada-002` model
 - **Store** embeddings in **Chroma** (persisted locally in SQLite and binary files)
 - **Query** the database semantically to find similar books
+- **Classify** books into higher-level groups to support better filtering
 
 The embeddings and metadata are stored in the `datasets/chroma_db/` directory.
 
 ---
 
 ## 🔮 Upcoming Features
-
-- **Text Classification**:  
-  Organizing and grouping books into more meaningful categories using ML models.
 
 - **Sentiment Analysis**:  
   Analyzing book descriptions to classify sentiment and improve recommendation relevance.
@@ -111,6 +161,7 @@ The embeddings and metadata are stored in the `datasets/chroma_db/` directory.
 - Python (Jupyter Notebooks)
 - LangChain
 - OpenAI API
+- Hugging Face Transformers
 - ChromaDB
 - dotenv
 - Pandas, NumPy
