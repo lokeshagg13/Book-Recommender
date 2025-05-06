@@ -329,4 +329,4 @@ if __name__ == "__main__":
         """
 
     # Launch Gradio interface
-    dashboard.launch(share=True)
+    dashboard.launch(share=True, favicon_path="https://huggingface.co/spaces/lkaggarwal1997/Book-Recommender/resolve/main/resources/favicon_io/favicon-32x32.png")
